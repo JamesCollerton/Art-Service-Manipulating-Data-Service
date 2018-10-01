@@ -24,7 +24,8 @@ public class PieceInformationController {
     @GetMapping
     public ResponseEntity<String> getAllPieceInformation() {
 
-        String allPieceInformationJSONString = restTemplate.getForObject("http://art-service-sourcing-data-service-application/pieces", String.class);
+        String allPieceInformationJSONString =
+                restTemplate.getForObject("http://art-service-sourcing-data-service-application/pieces", String.class);
 
         return new ResponseEntity<>(allPieceInformationJSONString, HttpStatus.OK);
     }
