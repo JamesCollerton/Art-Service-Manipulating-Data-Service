@@ -1,20 +1,13 @@
-package com.artservicemanipulatingdataservice.artservicemanipulatingdataservice.Controllers;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.artservicemanipulatingdataservice.artservicemanipulatingdataservice.controllers;
 
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
-import com.netflix.appinfo.InstanceInfo;
-import com.netflix.discovery.DiscoveryClient;
-import com.netflix.discovery.EurekaClient;
 
 /**
  * This is the controller for requests regarding information around artwork pieces.
