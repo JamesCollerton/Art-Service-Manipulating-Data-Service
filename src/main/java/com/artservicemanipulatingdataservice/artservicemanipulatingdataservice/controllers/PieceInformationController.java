@@ -38,7 +38,7 @@ public class PieceInformationController {
     public ResponseEntity<String> getAllPieceInformation() {
 
         String allPieceInformationJSONString =
-                restTemplate.getForObject("http://art-service-sourcing-data-service-application/pieces", String.class);
+                restTemplate.getForObject("http://art-service-sourcing-data-service/pieces", String.class);
 
         return new ResponseEntity<>(allPieceInformationJSONString, HttpStatus.OK);
     }
