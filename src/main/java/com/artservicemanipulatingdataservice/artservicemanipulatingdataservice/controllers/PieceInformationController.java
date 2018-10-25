@@ -43,7 +43,7 @@ public class PieceInformationController {
             httpMethod = "GET",
             value = "Gets all information around artwork pieces",
             notes = "Returns a list of piece information for all artwork in the collection.",
-//            response = String.class,
+            response = List.class,
             produces = "application/json"
     )
     @GetMapping
