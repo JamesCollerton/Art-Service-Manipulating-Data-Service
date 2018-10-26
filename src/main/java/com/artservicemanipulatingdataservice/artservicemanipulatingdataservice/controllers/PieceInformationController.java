@@ -22,12 +22,6 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 public class PieceInformationController {
 
     /**
-     * Autowired rest template to allow us to use Eureka intelligent routing.
-     */
-    @Autowired
-    private RestTemplate restTemplate;
-
-    /**
      * Autowired feign sourcing data client
      */
     @Autowired
