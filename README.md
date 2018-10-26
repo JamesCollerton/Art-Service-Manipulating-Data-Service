@@ -3,11 +3,13 @@
 
 # Art Service Manipulating Data Service
 
-This is the art service manipulating data service.
+This is the art service manipulating data service. It is used to do any data manipulation between sourcing it from the database and delivering it to the front end.
 
 Detail | Value
 ------------ | -------------
 Port Number | 8083
 Spring Application Name | art-service-manipulating-data-service
+ECR Repository Name |
+ECS Service/ Task Name |
 
-This project relies on Eureka, Feign, Swagger, Lombok and Actuator. 
+
