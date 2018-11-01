@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-    artservicesourcingdataservice:
+    artservicemanipulatingdataservice:
         build: 
             context: ./
         ports:
-            - 8761:8761
+            - 8083:8083
         image: artservicemanipulatingdataservice:${TAG}
