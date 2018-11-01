@@ -6,5 +6,12 @@ before_install:
 script:
   - ./mvnw clean install
   - bash <(curl -s https://codecov.io/bash)
+  - echo "TAG=latest" > .env
+  - pip install --user awscli
+  - export PATH=$PATH:$HOME/.local/bin
+  - eval $(aws ecr get-login --no-include-email --region us-east-1) 
+  - docker-compose build
+  - docker tag artservicemanipulatingdataservice:latest $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/art-service-manipulating-data-service:latest
+  - docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/art-service-manipulating-data-service:latest
 notifications:
     slack: j-coll-art-service:6CMGMmkkSYGiK2nAZpxpLKfF
