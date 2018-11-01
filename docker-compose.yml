@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+    artservicesourcingdataservice:
+        build: 
+            context: ./
+        ports:
+            - 8761:8761
+        image: artservicegateway:${TAG}
