@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/JamesCollerton/Art_Service_Manipulating_Data_Service.svg?token=KdiR1xs9jsHVYsSCNwx4&branch=master)](https://travis-ci.com/JamesCollerton/Art_Service_Manipulating_Data_Service)
 [![codecov](https://codecov.io/gh/JamesCollerton/Art_Service_Manipulating_Data_Service/branch/master/graph/badge.svg)](https://codecov.io/gh/JamesCollerton/Art_Service_Manipulating_Data_Service)
+[![Maintainability](https://api.codeclimate.com/v1/badges/03ffc27183f0a5fb0093/maintainability)](https://codeclimate.com/github/JamesCollerton/Art_Service_Manipulating_Data_Service/maintainability)
 
 # Art Service Manipulating Data Service
 
