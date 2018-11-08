@@ -9,7 +9,7 @@ Detail | Value
 ------------ | -------------
 Port Number | 8083
 Spring Application Name | art-service-manipulating-data-service
-ECR Repository Name |
+ECR Repository Name | art-service-manipulating-data-service
 ECS Service/ Task Name |
 
 
