@@ -1,18 +1,18 @@
 package com.artservicemanipulatingdataservice.artservicemanipulatingdataservice.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import io.swagger.annotations.ApiOperation;
 import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.client.RestTemplate;
 import com.artservicemanipulatingdataservice.artservicemanipulatingdataservice.clients.ArtServiceSourcingDataServiceClient;
-import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.artservicemanipulatingdataservice.artservicemanipulatingdataservice.commands.hystrix.commands.GetAllPieceInformationHystrixCommand;
 
 /**
  * This is the controller for requests regarding information around artwork pieces.
@@ -28,6 +28,12 @@ public class PieceInformationController {
     private ArtServiceSourcingDataServiceClient artServiceSourcingDataServiceClient;
 
     /**
+     * Autowired hystrix command for circuit breaking
+     */
+    @Autowired
+    private GetAllPieceInformationHystrixCommand getAllPieceInformationHystrixCommand;
+
+    /**
      * End point for getting all of the piece information from the sourcing data service. Does
      * not deserialize the result as no manipulation is needed.
      *
@@ -41,14 +47,22 @@ public class PieceInformationController {
             produces = "application/json"
     )
     @GetMapping
-    public ResponseEntity<List> getAllPieceInformation() {
+    public ResponseEntity<List> getAllPieceInformation() throws Exception {
 
-        String allPieceInformationJSONString = artServiceSourcingDataServiceClient.getAllPieceInformation();
+        String allPieceInformationJSONString = getAllPieceInformationHystrixCommand.run();
 
         new JSONArray(allPieceInformationJSONString);
 
         return new ResponseEntity<>(new JSONArray(allPieceInformationJSONString).toList(), HttpStatus.OK);
 
+    }
+
+    /**
+     * This is the exception handler for the controller
+     */
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<List> handleException() {
+        return new ResponseEntity<>(new ArrayList(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }
